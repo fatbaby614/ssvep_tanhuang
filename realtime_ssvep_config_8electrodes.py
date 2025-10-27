@@ -8,8 +8,8 @@ FREQ_LEFT  = 12.0   # Hz - 左
 # 刺激窗口配置
 STIM_SIZE   = 600         # px - 刺激方块大小 (增大)
 WINDOW_SIZE = (800, 800)  # px - 窗口大小 (增大)
-STIM_DURATION = 3.0       # 秒 - 每个刺激持续时间 (延长一倍)
-REST_DURATION = 3.0       # 秒 - 休息时间
+STIM_DURATION = 2.0       # 秒 - 每个刺激持续时间 (延长一倍)
+REST_DURATION = 1.0       # 秒 - 休息时间
 
 # 脑电数据采集配置（8个通道）
 FS          = 250         # Hz - 采样率
