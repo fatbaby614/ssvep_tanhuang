@@ -38,8 +38,8 @@ CH_P7 = 7  # P7通道索引
 ALL_CHANNELS = [CH_O2, CH_O1, CH_OZ, CH_PZ, CH_P4, CH_P3, CH_P8, CH_P7]
 
 # 信号处理配置
-PROCESSING_WINDOW_SEC = 2.0  # 处理窗口长度（秒）
-PROCESSING_HOP_SEC    = 0.5  # 处理步长（秒）
+PROCESSING_WINDOW_SEC = 2.0  #2.0  # 处理窗口长度（秒）
+PROCESSING_HOP_SEC    = 0.5 #0.5  # 处理步长（秒）
 BANDPASS_LOW  = 5.0          # Hz - 带通滤波低频
 BANDPASS_HIGH = 60.0         # Hz - 带通滤波高频
 NOTCH_FREQ    = 50.0         # Hz - 陷波频率
