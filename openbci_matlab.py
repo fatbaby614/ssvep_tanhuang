@@ -25,7 +25,7 @@ class StreamerLSL():
 
     def __init__(self,daisy=False):
         parser = argparse.ArgumentParser(description="OpenBCI 'user'")
-        parser.add_argument('-p', '--port',default='COM5',
+        parser.add_argument('-p', '--port',default='COM3',
                         help="Port to connect to OpenBCI Dongle " +
                         "( ex /dev/ttyUSB0 or /dev/tty.usbserial-* )")
         parser.add_argument('-d', action="store_true",
@@ -36,21 +36,21 @@ class StreamerLSL():
         print ("\n-------INSTANTIATING BOARD-------")
         self.board = bci.OpenBCIBoard(port, daisy=args.d)
         self.eeg_channels = self.board.getNbEEGChannels()
-        self.aux_channels = self.board.getNbAUXChannels()
+        # self.aux_channels = self.board.getNbAUXChannels()
         self.sample_rate = self.board.getSampleRate()
-
-        print('{} EEG channels and {} AUX channels at {} Hz'.format(self.eeg_channels, self.aux_channels,self.sample_rate))
+        print('{} EEG channels at {} Hz'.format(self.eeg_channels,self.sample_rate))
+        # print('{} EEG channels and {} AUX channels at {} Hz'.format(self.eeg_channels, self.aux_channels,self.sample_rate))
 
     def send(self,sample):
         print(sample.channel_data)
         self.outlet_eeg.push_sample(sample.channel_data)
-        self.outlet_aux.push_sample(sample.aux_data)
+        # self.outlet_aux.push_sample(sample.aux_data)
 
     def create_lsl(self):
         info_eeg = StreamInfo("OpenBCI_EEG", 'EEG', self.eeg_channels, self.sample_rate,'float32',"openbci_eeg_id1");
-        info_aux = StreamInfo("OpenBCI_AUX", 'AUX', self.aux_channels,self.sample_rate,'float32',"openbci_aux_id1")
+        # info_aux = StreamInfo("OpenBCI_AUX", 'AUX', self.aux_channels,self.sample_rate,'float32',"openbci_aux_id1")
         self.outlet_eeg = StreamOutlet(info_eeg)
-        self.outlet_aux = StreamOutlet(info_aux)
+        # self.outlet_aux = StreamOutlet(info_aux)
 
     def cleanUp():
         board.disconnect()
